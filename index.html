@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+	<title>Camera Example</title>
+	<meta name="viewport" id="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no;"/>
+</head>
+<body onload="loadJS()">
+	<header>Example Camera Application</header>
+	<section>Use of Phonegap Camera</section>
+	<section><input type="button" value="Load Camera" onclick="takePhoto()"></section>
+	<script>
+		function loadJS(){
+			document.addEventListener("deviceready", onDeviceReady,false);
+		}
+
+		function onDeviceReady(){
+			navigator.notification.alert("onDeviceReady");
+		}
+
+		function takePhoto(){
+			navigator.camera.getPicture(onCameraSuccess,onCameraError);
+		}
+
+		function onCameraSuccess(imageURL){
+			navigator.notification.alert("onCameraSuccess: " + imageURL);
+		}
+
+		function onCameraError(e){
+			navigator.notification.alert("onCameraError: " + e);
+		}
+	</script>
+</body>
+</html>
